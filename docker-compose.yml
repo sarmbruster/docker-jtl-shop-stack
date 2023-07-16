@@ -2,28 +2,36 @@ version: "3.8"
 
 services: 
     jtl-shop:
-        image: jtl-5-0-1
+        image: jtl:5.5.2
         build: ./docker/web
         ports: 
             - "80:80"
+            - "443:443"
         volumes: 
             - ./shop:/var/www/html
         depends_on: 
             - "jtl-db"
+        user: "1000"
+        extra_hosts:
+        - "host.docker.internal:host-gateway"
     
     jtl-db:
-        image: mariadb:10.6.0
+        image: mariadb:10.9 
+        # NB according to prerequisites MariaDB up to 10.9 works
+        # 10.11.4 does not work due to innodb reporting null version https://vscode.dev/github/sarmbruster/docker-jtl-shop-stack/blob/master/shop/includes/src/Update/DBMigrationHelper.php#L768
         ports: 
             - "3306:3306"
         environment:
             MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
             MYSQL_USER: "${MYSQL_USER}"
             MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+            MYSQL_DATABASE: "${MYSQL_DATABASE}"
         volumes: 
-            - jtl_db_5_0_1:/var/lib/mysql
+            - jtl_db:/var/lib/mysql
+            - ./sql:/docker-entrypoint-initdb.d
 
     phpmyadmin:
-        image: phpmyadmin:5.1.0-apache
+        image: phpmyadmin:5.2.1-apache
         ports: 
             - "8080:80"
         environment: 
@@ -32,7 +40,7 @@ services:
             - "jtl-db"
 
 volumes: 
-    jtl_db_5_0_1:
+    jtl_db:
 
 
 
