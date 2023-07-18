@@ -15,9 +15,7 @@ COPY php.ini "$PHP_INI_DIR/php.ini"
 # COPY XDEBUG INI
 COPY xdebug.ini "$PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini"
 
-# setup ssl: copy certificates and config
-RUN mkdir -p /etc/apache2/ssl
-COPY *.pem /etc/apache2/ssl
+# setup ssl onfig
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # ENABLE apache mod_rewrite

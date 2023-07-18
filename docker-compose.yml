@@ -9,6 +9,8 @@ services:
             - "443:443"
         volumes: 
             - ./shop:/var/www/html
+            - ./ssl:/etc/apache2/ssl
+
         depends_on: 
             - "jtl-db"
         user: "1000"

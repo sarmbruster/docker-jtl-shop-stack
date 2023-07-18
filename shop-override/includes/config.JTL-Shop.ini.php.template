@@ -1,0 +1,38 @@
+<?php
+define("PFAD_ROOT", "/var/www/html/");
+define("URL_SHOP", "${SHOP_URL}");
+
+define("DB_HOST","jtl-db");
+define("DB_NAME","${MYSQL_DATABASE}");
+define("DB_USER","${MYSQL_USER}");
+define("DB_PASS","${MYSQL_PASSWORD}");
+
+define("BLOWFISH_KEY", "${SHOP_BLOWFISH_KEY}");
+
+
+//enables printing of warnings/infos/errors for the shop frontend
+//define('SHOP_LOG_LEVEL', E_ALL);
+//enables printing of warnings/infos/errors for the dbeS sync
+//define('SYNC_LOG_LEVEL', E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_WARNING);
+//define('SYNC_LOG_LEVEL', E_ALL); 
+//enables printing of warnings/infos/errors for the admin backend
+//define('ADMIN_LOG_LEVEL', E_ALL);
+//enables printing of warnings/infos/errors for the smarty templates
+//define('SMARTY_LOG_LEVEL', E_ALL);
+//excplicitly show/hide errors
+//ini_set('display_errors', 1);
+
+
+//ini_set('log_errors', 1);
+//ini_set('error_log', PFAD_ROOT . 'jtllogs/phperrors.log');
+//##error_log
+//function shutdown()
+//{
+	//chdir(PFAD_ROOT."/jtllogs/");
+	//$error = error_get_last();
+    //if ($error['type'] === E_ERROR) {
+		//file_put_contents("error.log",date('Y.m.d H:i:s')." Fatal error: {$error['message']} in {$error['file']} on line {$error['line']}\r\n",FILE_APPEND);
+    //}
+//}
+//register_shutdown_function('shutdown');
+//define('SAFE_MODE', true);

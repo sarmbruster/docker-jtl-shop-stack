@@ -101,3 +101,11 @@ Temporary Items
 
 # Environment files
 .env
+
+# stuff from external sources
+ssl/
+shop/
+sql/
+/shop.zip
+/shop.tar.gz
+shop.backup/
